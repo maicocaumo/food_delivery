@@ -6,6 +6,9 @@ import com.delivery.cadastro.entity.Prato;
 import com.delivery.cadastro.entity.Restaurante;
 import com.delivery.cadastro.mapper.PratoMapper;
 import com.delivery.cadastro.mapper.RestauranteMapper;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.SimplyTimed;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import org.eclipse.microprofile.openapi.annotations.enums.SecuritySchemeType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -56,9 +59,9 @@ public class RestauranteResource {
 //    String sub;
 
     @GET
-//    @Counted(name = "Quantidade buscas Restaurante")
-//    @SimplyTimed(name = "Tempo simples de busca")
-//    @Timed(name = "Tempo completo de busca")
+    @Counted(name = "Quantidade buscas Restaurante")
+    @SimplyTimed(name = "Tempo simples de busca")
+    @Timed(name = "Tempo completo de busca")
     public List<RestauranteDTO> buscar() {
         Stream<Restaurante> restaurantes = Restaurante.streamAll();
         return restaurantes.map(r -> restauranteMapper.toRestauranteDTO(r)).collect(Collectors.toList());
