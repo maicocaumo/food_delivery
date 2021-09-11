@@ -1,4 +1,4 @@
-package com.delivery.cadastro;
+package com.delivery.cadastro.utils;
 
 import java.util.HashMap;
 import java.util.Map;
